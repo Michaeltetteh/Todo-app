@@ -57,5 +57,5 @@ def delete(request, pk):
         })
     else:
         return JsonResponse({
-            "status": "Error deleting object"
+            "status": "BAD_REQUEST"
         })
