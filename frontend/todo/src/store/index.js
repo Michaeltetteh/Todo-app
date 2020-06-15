@@ -22,8 +22,8 @@ export default new Vuex.Store({
 
       deleteTodoItem({commit},obj) {
         axios.post(`http://localhost:8000/api/delete/${obj.id}/`).then((res) => {
-          console.log(res.data);
-          // commit('UPDATE_TODO_LIST',res.data)
+          // console.log(res.data);
+          commit('UPDATE_TODO_LIST',res.data)
         });
       }
   },

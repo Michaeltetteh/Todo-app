@@ -1,11 +1,11 @@
 <template>
     <div id="todo-list-container">
-        <p>Your ToDo LIST </p>
         <div 
           v-for="obj in todoItems.data"
           :key="obj.index"
           class="card"
           id="todo-list">
+        <h3>Your ToDo list </h3>
           <div class="card-header">
             {{ obj.name }}
           </div>
@@ -50,6 +50,10 @@ export default {
 
 #todo-list-container {
   padding: 1px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 #todo-body {
   text-align: justify;
