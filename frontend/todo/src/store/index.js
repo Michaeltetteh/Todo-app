@@ -9,16 +9,23 @@ export default new Vuex.Store({
     todoItem: []
   },
   mutations: {
-      ADD_TODO_LIST(state, payload) {
+      UPDATE_TODO_LIST(state, payload) {
         state.todoItem = payload
       }
   },
   actions: {
       getTodoItems({ commit }) {
         axios.get('http://localhost:8000/api/show/').then((res) => {
-          commit('ADD_TODO_LIST', res.data)
+          commit('UPDATE_TODO_LIST', res.data)
         });
       },
+
+      deleteTodoItem({commit},obj) {
+        axios.post(`http://localhost:8000/api/delete/${obj.id}/`).then((res) => {
+          console.log(res.data);
+          // commit('UPDATE_TODO_LIST',res.data)
+        });
+      }
   },
   getters: {
     todoItems: state => state.todoItem
