@@ -1,5 +1,6 @@
 <template>
        <div>
+           <form>
             <input placeholder="Enter todo list name"
                 v-model="name"
                 class="input is-small" text="text" />
@@ -8,6 +9,18 @@
                 class="input is-small" text="text" />
             <button type="submit" class="btn btn-primary"
                 @click="addTodoList()">Submit</button>
+           </form>
+
+           <form @submit="submitForm">
+                <div class="row">
+                    <div class="col">
+                    <input ref="name" type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                    <input ref="description" type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+            </form>
        </div>
 </template>
 
@@ -23,12 +36,13 @@ export default {
     },
 
     methods: {
-        addTodoList() {
-            let name = this.name;
-            let description = this.description;
+        addTodoList(evt) {
+            evt.preventDefault();
+            let name = this.$ref.name.value;
+            let description = this.$ref.description.value;
             this.$store.dispatch('addTodoList',{'name':name,'description':description});
             this.name = '';
-            this.description = '';  
+            this.description = '';
         }
     },
     updated: {
