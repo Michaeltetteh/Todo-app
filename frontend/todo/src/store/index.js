@@ -25,6 +25,12 @@ export default new Vuex.Store({
           // console.log(res.data);
           commit('UPDATE_TODO_LIST',res.data)
         });
+      },
+
+      addTodoList({commit}, payload) {
+        axios.post("http://localhost:8000/api/create/",payload).then((res) =>{
+          commit("UPDATE_TODO_LIST",res.data)
+        });
       }
   },
   getters: {
