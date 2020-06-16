@@ -34,9 +34,12 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      'deleteTodoItem'
-    ])
+    // ...mapActions([
+    //   'deleteTodoItem'
+    // ])
+    deleteTodoItem(obj) {
+      this.$store.dispatch('deleteTodoItem',obj)
+    }
   }
 };
 </script>
